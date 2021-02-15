@@ -4,11 +4,12 @@
 - 작성자 : 강산희 (sanh2@sju.ac.kr)
 - MySQL, html
 
-- 웹 페이지
+### 웹 페이지
 ![image](https://user-images.githubusercontent.com/46476876/107908339-25d00000-6f99-11eb-9ecd-b496933510f4.png)
 
-- 테이블 생성 및 로컬 파일 업로드
-```
+### 테이블 생성 및 로컬 파일 업로드
+
+```mysql
 use db1;
 CREATE TABLE Tof ( 
 	id INT NOT NULL AUTO_INCREMENT primary key, 
