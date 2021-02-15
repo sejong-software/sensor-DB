@@ -1,0 +1,142 @@
+<html>
+<meta charset="UTF-8">
+
+<head>
+    <title>Sensor DB</title>
+</head>
+<style>
+
+#container {
+	width: 1080px;
+	margin: 0 auto;
+	text-align: center;
+}
+.tab {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+#tabcontent {
+	display: block;
+	background-color: rgb(215, 215, 225);
+	padding: 40px 12px;
+	color: black;
+}
+a{
+	display: inline-block;
+	color: #000;
+	text-align: center;
+	text-decoration: none;
+	padding: 8px 12px;
+	font-size: 17px;
+	transition: 0.3s;
+}
+a:visited { 
+	color: black; 
+	text-decoration: none;
+	
+	}
+
+
+li {
+	float: left;
+	display: inline-block;
+	color: rgb(106, 187, 224);
+	text-align: center;
+	text-decoration: none;
+	padding: 2px 8px;
+	font-size: 17px;
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function() {
+		// tab operation
+		$('.tabmenu').click(function() {
+			var activeTab = $(this).attr('data-tab');
+			$('li').css('background-color', 'white');
+			$(this).css('background-color', 'rgb(106, 187, 224)');
+			$.ajax({
+				type : 'GET',                 //get방식으로 통신
+				url : activeTab + ".html",    //탭의 data-tab속성의 값으로 된 html파일로 통신
+				dataType : "html",            //html형식으로 값 읽기
+				error : function() {          //통신 실패시
+					alert('통신실패!');
+				},
+				success : function(data) {    //통신 성공시 탭 내용담는 div를 읽어들인 값으로 채운다.
+					$('#tabcontent').html(data);
+				}
+			});
+		});
+		$('#default').click();          
+	});
+</script>
+<body>
+    <div align="center">
+        <br>
+        <br>
+        <h2 >Show Database table</h2>
+        <form method="post" action="simple_select.php">
+            테이블을 표시합니다.<br>
+            <input type="submit" value="확인">
+        </form>
+        <br>
+        <br>
+        <h2 >Seletct the sensor</h2>
+       
+        <form action="simple_search.php" method="post">
+            <table>
+                <tr>
+                            
+                
+                    <td valgn="top"> Lidar : <input type="text" name="lidar_se" size=20> </td>
+                    <td valgn="top">ToF : <input type="text" name="tof_se" size=20> </td>
+                            
+                
+                </tr>
+            </table>
+            <input type="submit" value="Export" >
+                
+        </form>
+        <br>
+        <br>
+         <!-- 
+        <form action="simple_search.php" method="post">
+            <table>
+                <tr>
+                <td valgn="top">
+                    Lidar : <select name="items1">
+                        <option value="Lidar1">Lidar111111111</option>
+                        <option value="Lidar2">Lidar222222222222</option>
+                        <option value="Lidar3">Lidar33333333333</option>
+                    </select>
+                </td>
+
+                <td valgn="top">
+                    ToF : <select name="items1">
+                        <option value="ToF1">ToF1</option>
+                        <option value="ToF2">ToF2</option>
+                        <option value="ToF3">ToF3</option>
+                    </select>
+                </td>
+                </tr>
+            </table>
+ 
+        
+       -->   
+
+
+        <h2>Insert the data</h2>
+     
+        <div id="container">
+            <ul class="tab">
+                <li data-tab="tab1" class='tabmenu' id="default"><a href="#">LiDAR</a></li>
+                <li data-tab="tab2" class='tabmenu'><a href="#">ToF Camera</a></li>
+            </ul>
+            <div id="tabcontent"></div>
+        </div>
+    </div>
+</body>
+</html>
