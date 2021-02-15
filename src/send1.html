@@ -1,0 +1,79 @@
+<html>
+<meta charset="UTF-8">
+
+<head>
+    <title>Sensor DB</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div align="center">
+        <br>
+        <br>
+        <h2 >Show Database table</h2>
+        <form method="post" action="simple_select1.php">
+            테이블을 표시합니다.<br>
+            <input type="submit" value="확인">
+        </form>
+        <br>
+        <br>
+        <h2 >Seletct the sensor</h2>
+       
+        <form action="simple_search1.php" method="post">
+            <table>
+                <tr>
+                            
+                
+                    <td valgn="top"> Lidar : <input type="text" name="lidar_se" size=20> </td>
+                    <td valgn="top">ToF : <input type="text" name="tof_se" size=20> </td>
+                            
+                
+                </tr>
+            </table>
+            <input type="submit" value="Export" >
+                
+        </form>
+        <br>
+        <br>
+         <!-- 
+        <form action="simple_search.php" method="post">
+            <table>
+                <tr>
+                <td valgn="top">
+                    Lidar : <select name="items1">
+                        <option value="Lidar1">Lidar111111111</option>
+                        <option value="Lidar2">Lidar222222222222</option>
+                        <option value="Lidar3">Lidar33333333333</option>
+                    </select>
+                </td>
+
+                <td valgn="top">
+                    ToF : <select name="items1">
+                        <option value="ToF1">ToF1</option>
+                        <option value="ToF2">ToF2</option>
+                        <option value="ToF3">ToF3</option>
+                    </select>
+                </td>
+                </tr>
+            </table>
+ 
+        
+       -->   
+
+        
+        <h2>Insert the sensor data</h2>
+        <from method="post" action="simple_insert.php>">
+            <input type="radio" name="sensor" value="lidar">LiDAR
+            <input type="radio" name="sensor" value="tof">ToF
+            <br>
+            Name : <input type="text" name="name_i" size=20>
+            Manufacturer : <input type="text" name="namr_m" size=20>
+            FOV_V  : <input type="text" name="name_fv" size=20>
+            FOV_H  : <input type="text" name="name_fh" size=20>
+            <input type="submit" value="Insert">
+        </form>      
+    </div>
+</body>
+</html>
